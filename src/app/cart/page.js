@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "@/slices/cartSlice";
 import { XCircleIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import dynamic from "next/dynamic";
 
 export const metadata = {
@@ -25,6 +26,7 @@ function CartPage() {
   const updateCartHandler = (item, qty) => {
     const quantity = Number(qty);
     dispatch(addItem({ ...item, quantity }));
+    toast.success("Product updated in the cart");
   };
 
   return (

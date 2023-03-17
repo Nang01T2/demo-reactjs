@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const initialState = {
   cart: Cookies.get("cart")
     ? JSON.parse(Cookies.get("cart"))
-    : { cartItems: [], shippingAddress: {} },
+    : { cartItems: [], shippingAddress: {}, paymentMethod: "" },
 };
 
 export const cartSlice = createSlice({
@@ -41,10 +41,19 @@ export const cartSlice = createSlice({
       state.cart.shippingAddress = action.payload;
       Cookies.set("cart", JSON.stringify({ ...state.cart }));
     },
+    savePaymentMethod: (state, action) => {
+      state.cart.paymentMethod = action.payload;
+      Cookies.set("cart", JSON.stringify({ ...state.cart }));
+    },
   },
 });
 
-export const { addItem, removeItem, resetCart, saveShippingAddress } =
-  cartSlice.actions;
+export const {
+  addItem,
+  removeItem,
+  resetCart,
+  saveShippingAddress,
+  savePaymentMethod,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

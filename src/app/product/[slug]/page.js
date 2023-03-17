@@ -8,9 +8,24 @@ export let metadata = {
   title: "Product Not Found",
 };
 
-export default function ProductPage(props) {
-  const { slug } = props.params;
-  const product = data.products.find((x) => x.slug === slug);
+async function getProductData(slug) {
+  const res = await fetch(`${process.env.LOCAL_AUTH_URL}/api/products/${slug}`);
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+  //return data.products.find((x) => x.slug === slug);
+}
+
+export default async function ProductPage({ params }) {
+  const { slug } = params;
+  const product = await getProductData(slug);
   if (!product) {
     return <div>Product Not Found</div>;
   }
