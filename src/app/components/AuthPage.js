@@ -19,11 +19,11 @@ async function getSession() {
   return Object.keys(session).length > 0 ? session : null;
 }
 
-export default async function AuthPage({ children }) {
+export default async function AuthPage({ message, children }) {
   const session = await getSession();
   //const { data: session } = useSession();
   if (session?.user) {
     return <>{children}</>;
   }
-  return <Unauthorized />;
+  return <Unauthorized message={message} />;
 }

@@ -29,7 +29,7 @@ export const cartSlice = createSlice({
       );
       Cookies.set("cart", JSON.stringify({ ...state.cart }));
     },
-    resetCart: (state, action) => {
+    resetCart: (state) => {
       state.cart = {
         cartItems: [],
         shippingAddress: {},
@@ -45,6 +45,10 @@ export const cartSlice = createSlice({
       state.cart.paymentMethod = action.payload;
       Cookies.set("cart", JSON.stringify({ ...state.cart }));
     },
+    cartClearItems: (state) => {
+      state.cart.cartItems = [];
+      Cookies.set("cart", JSON.stringify({ ...state.cart }));
+    },
   },
 });
 
@@ -54,6 +58,7 @@ export const {
   resetCart,
   saveShippingAddress,
   savePaymentMethod,
+  cartClearItems,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

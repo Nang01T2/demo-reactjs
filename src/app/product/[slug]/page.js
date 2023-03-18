@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import data from "@/utils/data";
+//import data from "@/utils/data";
 import AddToCartButton from "@/app/components/AddToCartButton";
 
 export let metadata = {

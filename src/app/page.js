@@ -1,5 +1,5 @@
 import ProductItem from "@/app/components/ProductItem";
-import data from "@/utils/data";
+//import data from "@/utils/data";
 
 export const metadata = {
   title: "Home",
