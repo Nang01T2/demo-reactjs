@@ -5,7 +5,7 @@ import OrderHistory from "./components/OrderHistory";
 
 export default function OrderHistoryPage() {
   return (
-    <AuthPage message={"Signin required"}>
+    <AuthPage>
       <OrderHistory />
     </AuthPage>
   );

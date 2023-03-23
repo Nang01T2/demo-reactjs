@@ -6,6 +6,7 @@ import { fetchRequest, fetchSuccess, fetchFail } from "@/slices/orderSlice";
 import Link from "next/link";
 import Image from "next/image";
 import { getError } from "@/utils/error";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 async function getDataOrderDetail(orderId) {
   // Default options are marked with *
@@ -86,9 +87,31 @@ export default function OrderDetail({ orderId }) {
                 <div className="alert-error">Not paid</div>
               )}
             </div>
+            {/* <div className="card w-96 rounded-lg border border-gray-200  shadow-md">
+              <figure>
+                <img
+                  src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+                  alt="Shoes"
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">Shoes!</h2>
+                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div className="card-actions justify-end">
+                  <button className="btn btn-primary">Buy Now</button>
+                </div>
+              </div>
+            </div> */}
 
-            <div className="card overflow-x-auto p-5">
-              <h2 className="mb-2 text-lg">Order Items</h2>
+            <div className="card overflow-x-auto p-5 shadow-xl">
+              <h2 className="inline-flex w-full mb-2 text-lg">
+                Order Items{" "}
+                <ChevronDownIcon
+                  className="ml-2 -mr-1 h-5 w-5 text-blue-600 hover:text-blue-800"
+                  aria-hidden="true"
+                />
+              </h2>
+
               <table className="min-w-full">
                 <thead className="border-b">
                   <tr>

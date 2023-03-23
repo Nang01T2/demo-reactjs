@@ -15,7 +15,7 @@ export default function TopNavBar() {
       <div>
         <CartItem />
         {session?.user ? (
-          <DropdownUserMenu title={session.user.name} />
+          <DropdownUserMenu userInfo={session.user} />
         ) : (
           <Link href="/login" className="p-2">
             Login

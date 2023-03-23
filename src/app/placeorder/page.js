@@ -5,7 +5,7 @@ import PlaceOrder from "./components/PlaceOrder";
 
 export default function PlaceOrderPage() {
   return (
-    <AuthPage message="Login required">
+    <AuthPage>
       <CheckoutWizard activeStep={2} />
       <PlaceOrder />
     </AuthPage>

@@ -6,7 +6,7 @@ export default function OrderPage({ params }) {
   const { id: orderId } = params;
 
   return (
-    <AuthPage message={"Signin required"}>
+    <AuthPage>
       <OrderDetail orderId={orderId} />
     </AuthPage>
   );

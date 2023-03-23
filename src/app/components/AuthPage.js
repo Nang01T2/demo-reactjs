@@ -19,11 +19,13 @@ async function getSession() {
   return Object.keys(session).length > 0 ? session : null;
 }
 
-export default async function AuthPage({ message, children }) {
+export default async function AuthPage({ adminOnly, children }) {
   const session = await getSession();
   //const { data: session } = useSession();
   if (session?.user) {
+    if (adminOnly && !session?.user.isAdmin)
+      return <Unauthorized message={"Admin login required"} />;
     return <>{children}</>;
   }
-  return <Unauthorized message={message} />;
+  return <Unauthorized message={"Login required"} />;
 }

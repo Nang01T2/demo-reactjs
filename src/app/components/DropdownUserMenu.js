@@ -7,8 +7,8 @@ import { useDispatch } from "react-redux";
 import { resetCart } from "@/slices/cartSlice";
 import { signOut } from "next-auth/react";
 
-export default function DropdownUserMenu(props) {
-  let { title } = props;
+export default function DropdownUserMenu({ userInfo }) {
+  let { name, isAdmin } = userInfo;
   const dispatch = useDispatch();
   const logoutClickHandler = () => {
     dispatch(resetCart());
@@ -19,7 +19,7 @@ export default function DropdownUserMenu(props) {
     <>
       <Menu as="div" className="relative inline-block text-left">
         <Menu.Button className="inline-flex w-full justify-center rounded-md bg-white bg-opacity-20 py-2 text-sm font-medium text-blue-600 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          {title}
+          {name}
           <ChevronDownIcon
             className="ml-2 -mr-1 h-5 w-5 text-blue-600 hover:text-blue-800"
             aria-hidden="true"
@@ -36,6 +36,13 @@ export default function DropdownUserMenu(props) {
               Order History
             </DropdownLink>
           </Menu.Item>
+          {isAdmin && (
+            <Menu.Item>
+              <DropdownLink className="dropdown-link" href="/admin/dashboard">
+                Admin Dashboard
+              </DropdownLink>
+            </Menu.Item>
+          )}
           <Menu.Item>
             <a className="dropdown-link" href="#" onClick={logoutClickHandler}>
               Logout
